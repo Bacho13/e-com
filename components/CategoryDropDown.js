@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/componentStyles/CategoryDropDown.module.scss";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "@/Redux/actions";
 
