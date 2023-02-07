@@ -32,6 +32,7 @@ function Cart() {
           {cart.cartItems.map((item) => {
             return (
               <CartItem
+                key={item}
                 quant={item.quant}
                 handleplus={plus}
                 handleminus={minus}
