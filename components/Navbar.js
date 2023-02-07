@@ -6,7 +6,7 @@ import Link from "next/link";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import MenuSlider from "./Menuslider";
+import MenuSlider from "./MenuSlider";
 import CategoryDropDown from "./CategoryDropDown";
 import Authorisation from "./Authorisation";
 import { useSession } from "next-auth/react";
