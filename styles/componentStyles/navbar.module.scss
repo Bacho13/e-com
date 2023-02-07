@@ -1,0 +1,142 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  width: 100%;
+  background-color: $green;
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-family: poppins;
+    color: $light;
+    font-size: 18px;
+    text-transform: capitalize;
+    border: 5px solid $green;
+    cursor: pointer;
+  }
+  li:hover {
+    border-bottom: 5px solid $brown;
+  }
+}
+
+.rightSide {
+  display: flex;
+
+  nav {
+    margin-right: 0;
+  }
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 20vw;
+  }
+}
+.iconCont {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.menuIcon {
+  fill: $light;
+  width: 100%;
+  height: 100%;
+}
+.slideMenu {
+  width: 50vw;
+  height: 100vh;
+  background-color: $green;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  transition: left 0.3s;
+  display: none;
+  transition-timing-function: ease-in-out;
+}
+.slideMenuOut {
+  width: 0vw;
+  height: 100vh;
+  background-color: red;
+  position: absolute;
+  top: 60px;
+  transition: left 0.3s;
+  left: -50vw;
+}
+.phoneRightSide {
+  display: none;
+}
+
+@media only screen and (max-width: 1140px) {
+  .container {
+    width: 90%;
+    nav {
+      width: 70%;
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .rightSide {
+    ul {
+      width: 40vw;
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .rightSide {
+    display: none;
+  }
+  .phoneRightSide {
+    display: block;
+  }
+  .slideMenu {
+    display: block;
+  }
+}
+
+.categoryMenu {
+  display: block;
+  transition: height 2s;
+}
+
+.dropdown,
+.dropdownAuth {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent,
+.dropdownContentAuth {
+  display: none;
+  position: absolute;
+  background-color: $green;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+.dropdownAuth:hover .dropdownContentAuth {
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+.profilePic {
+  border-radius: 50px;
+  border: solid 3px $light;
+}

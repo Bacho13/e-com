@@ -1,0 +1,35 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  font-family: poppins;
+  color: $light;
+  margin-top: 20px;
+
+  background-color: $light-green;
+  .container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+  li {
+    border: none;
+    text-align: center;
+  }
+  a {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

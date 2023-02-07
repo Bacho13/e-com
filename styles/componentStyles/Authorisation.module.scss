@@ -1,0 +1,21 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  background-color: $light-green;
+  margin-top: 20px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  li {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

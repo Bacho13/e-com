@@ -1,0 +1,20 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  font-family: poppins;
+  padding-bottom: 30px;
+  min-height: 100vh;
+  h2 {
+    color: $green;
+    margin: 30px 0;
+  }
+}
+
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}

@@ -1,0 +1,76 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  font-family: poppins;
+  padding-bottom: 30px;
+
+  h2 {
+    color: $green;
+    margin: 30px 0;
+  }
+}
+
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+table.customTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  //   border-width: 2px;
+  //   border-color: #7ea8f8;
+  //   border-style: solid;
+  color: #000000;
+}
+
+table.customTable td,
+table.customTable th {
+  //   border-width: px;
+  //   border-color: #7ea8f8;
+  //   border-style: solid;
+  //   padding: 5px;
+  border-bottom: 1px solid $light-brown;
+  padding: 20px 0;
+  text-align: start;
+}
+
+table.customTable thead {
+  //   background-color: #7ea8f8;
+  color: $green;
+}
+
+table.customTable thead:last-child {
+  text-align: end;
+}
+
+.product {
+  display: flex;
+  p {
+    margin-left: 30px;
+  }
+}
+
+.qunatChanger {
+  display: flex;
+  width: 100px;
+  border: 1px solid $light-brown;
+  border-radius: 10px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.minus,
+.plus {
+  cursor: pointer;
+}
+
+.totalCont {
+  width: 150px;
+}

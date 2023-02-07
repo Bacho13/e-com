@@ -1,0 +1,23 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  width: 100%;
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: poppins;
+  text-transform: uppercase;
+  color: $light-green;
+}
+
+.container {
+  width: 1140px;
+  margin: 30px auto;
+}
