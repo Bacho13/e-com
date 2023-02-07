@@ -8,6 +8,17 @@ $brown: #8b866f;
   width: 100%;
   background-color: $green;
 }
+.announcement {
+  width: 100%;
+  background-color: #d24d57;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: white;
+    font-size: poppins;
+  }
+}
 .container {
   width: 1140px;
   margin: 0 auto;

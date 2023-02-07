@@ -2,7 +2,6 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import styles from "../styles/componentStyles/navbar.module.scss";
 import logo from "../public/images/logo.png";
-import profilePic from "../public/images/profilePic.png";
 import Link from "next/link";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,6 +22,9 @@ function Navbar() {
   return (
     <>
       <div className={styles.main}>
+        <div className={styles.announcement}>
+          <p>The site is under the constructions</p>
+        </div>
         <div className={styles.container}>
           <div className={styles.leftSide}>
             <Link href="/">
