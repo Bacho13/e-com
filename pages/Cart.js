@@ -29,16 +29,8 @@ function Cart() {
       <div className={styles.main}>
         <div className={styles.container}>
           <h2>Cart</h2>
-          {cart.cartItems.map((item) => {
-            return (
-              <CartItem
-                key={item}
-                quant={item.quant}
-                handleplus={plus}
-                handleminus={minus}
-                productId={item.productId}
-              />
-            );
+          {cart.items.map((item, index) => {
+            return <CartItem key={index} product={item} />;
           })}
           {/* <CartItem
             quant={quant}
@@ -52,7 +44,7 @@ function Cart() {
             handleminus={minus}
             price={price}
           /> */}
-          <Checkout total={total} />
+          <Checkout total={cart.total} />
         </div>
       </div>
     </>

@@ -10,17 +10,6 @@ function CategoryItem({ data }) {
   const categoryName = router.query.categoryName;
   const [fetchedData, setfetchedData] = useState([]);
 
-  // const fetchCategories = () => async () => {
-  //   try {
-  //     const res = await axios.get(
-  //       `https://fakestoreapi.com/products/category/${categoryName}`
-  //     );
-  //     setfetchedData(res.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
       .then((res) => res.json())

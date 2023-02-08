@@ -3,37 +3,10 @@ import styles from "../styles/componentStyles/CartItem.module.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToCart, clearCart } from "@/Redux/cartSlice";
-function CartItem({ productId, quant }) {
+function CartItem({ product, quant }) {
   let cart = useSelector((state) => state.cart);
   let cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
-  const [product, setProduct] = useState({});
-  const [total, setTotal] = useState(1);
-  const [innerQuant, setInnerQuant] = useState(quant);
-
-  const plus = () => {
-    setInnerQuant((prev) => prev + 1);
-  };
-  const minus = () => {
-    if (innerQuant > 1) {
-      setInnerQuant((prev) => prev - 1);
-    } else {
-      let newCart = cartItems.filter((obj) => obj.productId == productId);
-      dispatch(clearCart());
-      dispatch(addToCart(newCart));
-    }
-  };
-
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${productId}`)
-      .then((res) => res.json())
-      .then((json) => setProduct(json));
-    console.log(productId);
-  }, []);
-
-  useEffect(() => {
-    setTotal(innerQuant * product.price);
-  }, [minus, plus]);
 
   return (
     <>
@@ -59,18 +32,14 @@ function CartItem({ productId, quant }) {
                 <td>$ {product.price}</td>
                 <td>
                   <div className={styles.qunatChanger}>
-                    <div className={styles.minus} onClick={minus}>
-                      -
-                    </div>
-                    <div>{innerQuant}</div>
-                    <div className={styles.plus} onClick={plus}>
-                      +
-                    </div>
+                    <div className={styles.minus}>-</div>
+                    <div>1</div>
+                    <div className={styles.plus}>+</div>
                   </div>
                 </td>
                 <td>
                   <div className={styles.totalCont}>
-                    <h2>$ {total}</h2>
+                    <h2>$ {product.price}</h2>
                   </div>
                 </td>
               </tr>

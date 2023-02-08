@@ -67,7 +67,7 @@ function CategoryItem({ data }) {
             <div className={styles.buttonContainer}>
               <button
                 onClick={() => {
-                  dispatch(addToCart(choosen));
+                  dispatch(addToCart(data));
                 }}
               >
                 Add to Card
