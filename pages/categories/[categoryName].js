@@ -16,7 +16,6 @@ function CategoryItem({ data }) {
       .then((json) => setfetchedData(json));
   }, [categoryName]);
 
-  console.log(fetchedData);
   return (
     <>
       <div>

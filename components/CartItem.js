@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/componentStyles/CartItem.module.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addToCart, clearCart } from "@/Redux/cartSlice";
-function CartItem({ product, quant }) {
+import { addToCart, clearCart, decreaseItemQuant } from "@/Redux/cartSlice";
+function CartItem({ product, quant, index, handleDecrease, handleIncrease }) {
   let cart = useSelector((state) => state.cart);
-  let cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
   return (
@@ -32,14 +31,18 @@ function CartItem({ product, quant }) {
                 <td>$ {product.price}</td>
                 <td>
                   <div className={styles.qunatChanger}>
-                    <div className={styles.minus}>-</div>
-                    <div>1</div>
-                    <div className={styles.plus}>+</div>
+                    <div className={styles.minus} onClick={handleDecrease}>
+                      -
+                    </div>
+                    <div>{product.itemQuant}</div>
+                    <div className={styles.plus} onClick={handleIncrease}>
+                      +
+                    </div>
                   </div>
                 </td>
                 <td>
                   <div className={styles.totalCont}>
-                    <h2>$ {product.price}</h2>
+                    <h2>$ {product.price * product.itemQuant}</h2>
                   </div>
                 </td>
               </tr>

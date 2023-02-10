@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
-  total: 0,
+  totalQuant: 0,
+  subTotal: 0,
 };
 
 const cartSlice = createSlice({
@@ -10,26 +11,45 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const item = action.payload;
+      const item = {
+        ...action.payload.data,
+        itemQuant: action.payload.quantity,
+      };
       state.items.push(item);
-      state.total += item.price;
-      console.log("clicked from cart slice");
+      state.totalQuant = action.payload.quantity;
+    },
+    decreaseItemQuant(state, action) {
+      if (state.items[action.payload].itemQuant > 1) {
+        state.items[action.payload].itemQuant -= 1;
+        state.totalQuant--;
+      } else if (state.items[action.payload].itemQuant === 1) {
+        state.items.splice(action.payload, 1);
+        state.totalQuant--;
+      }
+    },
+    increaseItemQuant(state, action) {
+      state.items[action.payload].itemQuant += 1;
+      state.totalQuant++;
+    },
+    getSubTotal(state) {
+      function getTotal(total, item) {
+        return (total += item.price * item.itemQuant);
+      }
+
+      state.subTotal = state.items.reduce(getTotal, 0);
     },
     clearCart: (state) => {
-      state.cartItems = [];
-    },
-    quantPlus: (state) => {
-      state.cartItems.quant + 1;
-      console.log("clicked plus ");
-    },
-
-    quantMinus: (state) => {
-      state.cartItems.quant - 1;
+      state.items = [];
     },
   },
 });
 
-export const { addToCart, clearCart, quantPlus, quantMinus } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  clearCart,
+  decreaseItemQuant,
+  increaseItemQuant,
+  getSubTotal,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

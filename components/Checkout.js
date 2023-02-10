@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/componentStyles/Checkout.module.scss";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "@/Redux/cartSlice";
+import { getSubTotal } from "@/Redux/cartSlice";
 
 function Checkout({ total }) {
-  const dispatch = useDispatch(0);
+  let cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSubTotal());
+  }, [cart.items]);
+
   return (
     <>
       <div className={styles.main}>
@@ -22,7 +29,7 @@ function Checkout({ total }) {
           <div className={styles.container}>
             <div className={styles.subtotal}>
               <p className={styles.subP}>Subtotal</p>
-              <h6>${total}</h6>
+              <h6>${cart.subTotal}</h6>
             </div>
             <div className={styles.checkButton}>
               <button>Checout</button>

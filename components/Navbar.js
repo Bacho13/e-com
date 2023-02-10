@@ -10,8 +10,10 @@ import MenuSlider from "./MenuSlider";
 import CategoryDropDown from "./CategoryDropDown";
 import Authorisation from "./Authorisation";
 import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  let cart = useSelector((state) => state.cart);
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -45,7 +47,9 @@ function Navbar() {
                 </li>
 
                 <li>
-                  <Link href="/Cart">Cart</Link>
+                  <Link href="/Cart">
+                    Cart {cart.totalQuant ? cart.totalQuant : ""}
+                  </Link>
                 </li>
                 <li>
                   <div className={styles.dropdownAuth}>

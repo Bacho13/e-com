@@ -11,10 +11,6 @@ function CategoryItem({ data }) {
   const [fetchedData, setfetchedData] = useState([]);
   const dispatch = useDispatch();
   const [quant, setQuant] = useState(1);
-  let [choosen, setChoosen] = useState({
-    productId: 0,
-    quant: 1,
-  });
 
   const increase = () => {
     setQuant((prev) => prev + 1);
@@ -28,14 +24,6 @@ function CategoryItem({ data }) {
   useEffect(() => {
     setfetchedData(data);
   }, [productId]);
-
-  useEffect(() => {
-    choosen.productId = productId;
-  }, [productId]);
-
-  useEffect(() => {
-    choosen.quant = quant;
-  }, [quant]);
 
   return (
     <>
@@ -67,7 +55,7 @@ function CategoryItem({ data }) {
             <div className={styles.buttonContainer}>
               <button
                 onClick={() => {
-                  dispatch(addToCart(data));
+                  dispatch(addToCart({ data, quantity: quant }));
                 }}
               >
                 Add to Card
