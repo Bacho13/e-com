@@ -36,7 +36,14 @@ const cartSlice = createSlice({
         return (total += item.price * item.itemQuant);
       }
 
-      state.subTotal = state.items.reduce(getTotal, 0);
+      state.subTotal = parseFloat(state.items.reduce(getTotal, 0).toFixed(2));
+    },
+    getTotalQuant(state) {
+      function getTotalQuant(total, item) {
+        return (total += item.itemQuant);
+      }
+
+      state.totalQuant = state.items.reduce(getTotalQuant, 0);
     },
     clearCart: (state) => {
       state.items = [];
@@ -50,6 +57,7 @@ export const {
   decreaseItemQuant,
   increaseItemQuant,
   getSubTotal,
+  getTotalQuant,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

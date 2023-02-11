@@ -11,6 +11,7 @@ import CategoryDropDown from "./CategoryDropDown";
 import Authorisation from "./Authorisation";
 import { useSession } from "next-auth/react";
 import { useSelector } from "react-redux";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 function Navbar() {
   let cart = useSelector((state) => state.cart);
@@ -48,7 +49,12 @@ function Navbar() {
 
                 <li>
                   <Link href="/Cart">
-                    Cart {cart.totalQuant ? cart.totalQuant : ""}
+                    <div className={styles.shoppingBagCont}>
+                      <LocalMallIcon />
+                      {cart.items.length > 0 && (
+                        <div className={styles.badge}>{cart.totalQuant}</div>
+                      )}
+                    </div>
                   </Link>
                 </li>
                 <li>
