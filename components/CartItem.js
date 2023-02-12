@@ -28,7 +28,11 @@ function CartItem({ product, quant, index, handleDecrease, handleIncrease }) {
               <tr>
                 <td>
                   <div className={styles.product}>
-                    <img src={product.image} alt="product img" width={150} />
+                    <img
+                      src={product.thumbnail}
+                      alt="product img"
+                      width={150}
+                    />
                     <p>{product.title}</p>
                   </div>
                 </td>

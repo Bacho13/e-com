@@ -31,11 +31,11 @@ function CategoryItem({ data }) {
         <div className={styles.card}>
           <div className={styles.imgsCont}>
             <Image
-              src={data.image}
+              src={data.thumbnail}
               alt="item pic"
               priority
               height={250}
-              width={250}
+              width={300}
               className={styles.image}
             />
           </div>
@@ -73,9 +73,7 @@ export default CategoryItem;
 export async function getServerSideProps(context) {
   const { params } = context;
   const { productId } = params;
-  const response = await fetch(
-    `https://fakestoreapi.com/products/${productId}`
-  );
+  const response = await fetch(`https://dummyjson.com/products/${productId}`);
   const data = await response.json();
   return {
     props: {

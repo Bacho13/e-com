@@ -12,7 +12,7 @@ function MainPageComponent() {
       <div className={styles.main}>
         <h1>All Products </h1>
         <div className={styles.container}>
-          {products.map((item) => {
+          {/* {products.map((item) => {
             return (
               <Link key={item.id} href={`/product/${item.id}`}>
                 <Item
@@ -24,7 +24,7 @@ function MainPageComponent() {
                 />
               </Link>
             );
-          })}
+          })} */}
         </div>
       </div>
     </>
