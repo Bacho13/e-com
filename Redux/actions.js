@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
   getProductsSuccess,
   getProductsFailure,
@@ -6,16 +7,20 @@ import {
   getCategoriesFailure,
 } from "../Redux/store";
 
-export const fetchProducts = (categoryName) => async (dispatch) => {
-  try {
-    const res = await axios.get(
-      `https://dummyjson.com/products/category/${categoryName}`
-    );
+// export const fetchProducts = async (dispatch, categoryName) => {
+//   const result = await axios.get(
+//     `https://dummyjson.com/products/category/${categoryName}`
+//   );
+//   console.log(result.data);
+//   dispatch(getProductsSuccess(result.data.products));
+// };
 
-    dispatch(getProductsSuccess(res));
-  } catch (error) {
-    dispatch(getProductsFailure(error.message));
-  }
+export const fetchProduct = async (categoryName) => {
+  const result = await axios.get(
+    `https://dummyjson.com/products/category/${categoryName}`
+  );
+
+  return result.data;
 };
 
 export const fetchCategories = () => async (dispatch) => {

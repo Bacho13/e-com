@@ -11,12 +11,20 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const item = {
-        ...action.payload.data,
-        itemQuant: action.payload.quantity,
-      };
-      state.items.push(item);
-      state.totalQuant = action.payload.quantity;
+      const existIndex = state.items.findIndex(
+        (obj) => obj.id === action.payload.data.id
+      );
+
+      if (existIndex >= 0) {
+        state.items[existIndex].itemQuant += action.payload.quantity;
+      } else {
+        const item = {
+          ...action.payload.data,
+          itemQuant: action.payload.quantity,
+        };
+        state.items.push(item);
+        state.totalQuant = action.payload.quantity;
+      }
     },
     decreaseItemQuant(state, action) {
       if (state.items[action.payload].itemQuant > 1) {

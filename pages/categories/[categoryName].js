@@ -5,31 +5,25 @@ import React, { useState, useEffect } from "react";
 import Item from "../../components/Item";
 import styles from "../../styles/pageStyles/CategoryName.module.scss";
 import CircularProgress from "@mui/material/CircularProgress";
-import { fetchProducts } from "../../Redux/actions";
+import { fetchProduct } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsFailure, getProductsSuccess } from "../../Redux/store";
 
 function CategoryItem({ data }) {
-  const products = useSelector((state) => state.products.items.products);
+  const products = useSelector((state) => state.products.items);
   const router = useRouter();
   const dispatch = useDispatch();
   const categoryName = router.query.categoryName;
 
-  useEffect(() => {
-    try {
-      const res = axios
-        .get(`https://dummyjson.com/products/category/${categoryName}`)
-        .then(function (response) {
-          dispatch(getProductsSuccess(response.data));
-        });
-    } catch (error) {
-      dispatch(getProductsFailure(error.message));
-    }
-  }, []);
+  const handleFetchProduct = async (categoryName) => {
+    const result = await fetchProduct(categoryName);
+    dispatch(getProductsSuccess(result.products));
+    console.log(result.products);
+  };
 
   useEffect(() => {
-    console.log(products);
-  }, []);
+    handleFetchProduct(categoryName);
+  }, [categoryName]);
 
   return (
     <>
@@ -55,17 +49,3 @@ function CategoryItem({ data }) {
   );
 }
 export default CategoryItem;
-
-// export async function getServerSideProps(context) {
-//   const { params } = context;
-//   const { categoryName } = params;
-//   const response = await fetch(
-//     `https://fakestoreapi.com/products/category/${categoryName}`
-//   );
-//   const data = await response.json();
-//   return {
-//     props: {
-//       data: data,
-//     },
-//   };
-// }

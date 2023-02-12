@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/card.module.scss";
-import { addToCart } from "../../Redux/cartSlice";
+import { addToCart, getTotalQuant } from "../../Redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 function CategoryItem({ data }) {
@@ -16,7 +16,7 @@ function CategoryItem({ data }) {
     setQuant((prev) => prev + 1);
   };
   const decrease = () => {
-    if (quant > 0) {
+    if (quant > 1) {
       setQuant((prev) => prev - 1);
     }
   };
@@ -56,6 +56,7 @@ function CategoryItem({ data }) {
               <button
                 onClick={() => {
                   dispatch(addToCart({ data, quantity: quant }));
+                  dispatch(getTotalQuant());
                 }}
               >
                 Add to Card

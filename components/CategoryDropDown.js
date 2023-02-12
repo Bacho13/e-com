@@ -8,10 +8,6 @@ function CategoryDropDown() {
   const categories = useSelector((state) => state.categories.items);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchCategories());
-  // }, []);
-
   return (
     <>
       <div className={styles.main}>
