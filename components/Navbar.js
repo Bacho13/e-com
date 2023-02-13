@@ -88,15 +88,15 @@ function Navbar() {
           <div className={styles.phoneRightSide}>
             <div className={styles.iconCont} onClick={ToggleButton}>
               {isOpen ? (
-                <MenuIcon className={styles.menuIcon} />
-              ) : (
                 <CloseIcon className={styles.menuIcon} />
+              ) : (
+                <MenuIcon className={styles.menuIcon} />
               )}
             </div>
           </div>
         </div>
 
-        <div className={`${isOpen ? styles.slideMenuOut : styles.slideMenu}`}>
+        <div className={`${isOpen ? styles.slideMenu : styles.slideMenuOut}`}>
           <MenuSlider className={styles.menuSlider} />
         </div>
       </div>

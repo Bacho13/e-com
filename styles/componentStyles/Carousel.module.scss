@@ -1,0 +1,39 @@
+.main {
+  width: 100%;
+}
+.imgCont {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: all 2s;
+}
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  cursor: pointer;
+  background-color: white;
+  opacity: 0.3;
+  border-radius: 50px;
+  width: 5vw;
+  height: 5vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 45%;
+
+  //   transform: translate(-50%);
+}
+.rightArrow {
+  right: 0;
+}
+.leftIcon,
+.rightIcon {
+  font-size: 5vw;
+}

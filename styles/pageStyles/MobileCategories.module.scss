@@ -1,0 +1,26 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $green;
+  font-family: poppins;
+  text-transform: uppercase;
+}
+.container {
+  width: 95%;
+  padding: 15px 0;
+  margin: 0 auto;
+  li {
+    list-style: none;
+    text-align: center;
+    background-color: #668a7f;
+    margin: 10px 0;
+    font-weight: bold;
+    padding: 15px 0;
+  }
+}

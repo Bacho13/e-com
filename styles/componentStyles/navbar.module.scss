@@ -90,15 +90,18 @@ $brown: #8b866f;
   align-items: center;
 }
 .slideMenu {
+  z-index: +1;
   width: 50vw;
-  height: 100vh;
+  padding: 20px 0;
   background-color: $green;
   position: absolute;
-  top: 50px;
+  top: 70px;
   left: 0;
   transition: left 0.3s;
   display: none;
   transition-timing-function: ease-in-out;
+  -webkit-box-shadow: 17px 14px 37px -12px rgba(0, 0, 0, 0.39);
+  box-shadow: 17px 14px 37px -12px rgba(0, 0, 0, 0.39);
 }
 .slideMenuOut {
   width: 0vw;
@@ -166,14 +169,15 @@ $brown: #8b866f;
 .dropdown:hover .dropdownContent {
   display: block;
   display: flex;
-  flex-direction: column;
 }
 .dropdownAuth:hover .dropdownContentAuth {
   display: block;
   display: flex;
-  flex-direction: column;
 }
 .profilePic {
   border-radius: 50px;
   border: solid 3px $light;
+}
+.menuSlider {
+  filter: drop-shadow(5px 5px 10px #000);
 }

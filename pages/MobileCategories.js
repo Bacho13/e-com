@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
-import styles from "../styles/componentStyles/CategoryDropDown.module.scss";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "@/Redux/actions";
+import styles from "../styles/pageStyles/MobileCategories.module.scss";
 
-function CategoryDropDown() {
+function MobileCategories() {
   const categories = useSelector((state) => state.categories.items);
 
   return (
@@ -12,7 +11,11 @@ function CategoryDropDown() {
       <div className={styles.main}>
         <div className={styles.container}>
           {categories.map((item, index) => (
-            <Link key={index} href={`/categories/${item}`}>
+            <Link
+              key={index}
+              href={`/categories/${item}`}
+              className={styles.link}
+            >
               <li>{item}</li>
             </Link>
           ))}
@@ -22,4 +25,4 @@ function CategoryDropDown() {
   );
 }
 
-export default CategoryDropDown;
+export default MobileCategories;

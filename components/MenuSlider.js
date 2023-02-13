@@ -7,7 +7,7 @@ function MenuSlider() {
     <>
       <nav className={styles.nav}>
         <ul>
-          <Link href="#">
+          <Link href="/MobileCategories">
             <li>Categories</li>
           </Link>
           <Link href="#">
