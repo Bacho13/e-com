@@ -4,14 +4,21 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "@/Redux/cartSlice";
 import { getSubTotal } from "@/Redux/cartSlice";
+import { useRouter } from "next/router";
 
 function Checkout({ total }) {
   let cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(getSubTotal());
   }, [cart.items]);
+
+  const backToShopping = () => {
+    router.back();
+    router.back();
+  };
 
   return (
     <>
@@ -34,7 +41,7 @@ function Checkout({ total }) {
             <div className={styles.checkButton}>
               <button>Checout</button>
             </div>
-            <div className={styles.ContShipping}>
+            <div className={styles.ContShipping} onClick={backToShopping}>
               <KeyboardBackspaceIcon />
               <p>Continue Shopping</p>
             </div>

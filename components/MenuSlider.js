@@ -10,7 +10,7 @@ function MenuSlider() {
           <Link href="/MobileCategories">
             <li>Categories</li>
           </Link>
-          <Link href="#">
+          <Link href="/Cart">
             <li>Cart </li>
           </Link>
           <Link href="#">

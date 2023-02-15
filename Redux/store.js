@@ -3,7 +3,7 @@ import cartReducer from "./cartSlice";
 
 const initialState = {
   items: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 
