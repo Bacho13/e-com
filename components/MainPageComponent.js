@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import styles from "../styles/componentStyles/MainPageComponent.module.scss";
 import Carousel from "./Carousel";
 import Item from "./Item";
+import CategoryOnMain from "@/components/CategoryOnMain";
 
 function MainPageComponent() {
   const products = useSelector((state) => state.products.items);
@@ -27,6 +28,8 @@ function MainPageComponent() {
             })} 
         </div> */}
         <Carousel />
+        <CategoryOnMain categoryName="smartphones" />
+        <CategoryOnMain categoryName="laptops" />
       </div>
     </>
   );

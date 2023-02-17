@@ -10,13 +10,21 @@ import MenuSlider from "./MenuSlider";
 import CategoryDropDown from "./CategoryDropDown";
 import Authorisation from "./Authorisation";
 import { useSession } from "next-auth/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { fetchCategories } from "@/Redux/actions";
 
 function Navbar() {
   let cart = useSelector((state) => state.cart);
+
+  const loading = useSelector((state) => state.categories.isLoading);
+  const dispatch = useDispatch();
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+
+  const reFetchCategories = () => {
+    dispatch(fetchCategories());
+  };
 
   const ToggleButton = () => {
     setIsOpen((prev) => !prev);
@@ -42,7 +50,7 @@ function Navbar() {
                   <div className={styles.dropdown}>
                     <p>Categories</p>
                     <div className={styles.dropdownContent}>
-                      <CategoryDropDown />
+                      <CategoryDropDown onMouseEnter={reFetchCategories} />
                     </div>
                   </div>
                 </li>

@@ -6,3 +6,14 @@
     text-transform: capitalize;
   }
 }
+
+@media only screen and (max-width: 425px) {
+  .container {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .container {
+    width: 75%;
+  }
+}

@@ -22,7 +22,7 @@ $brown: #8b866f;
     width: 100%;
     height: 50px;
     overflow: hidden;
-    width: 800px;
+
     overflow: hidden;
   }
   des {
@@ -36,7 +36,6 @@ $brown: #8b866f;
   box-shadow: 5px 5px 17px -2px rgba(0, 0, 0, 0.31);
 }
 .leftSide {
-  max-width: 50%;
   display: flex;
   justify-content: center;
   padding: 30px 20px;
@@ -61,4 +60,19 @@ $brown: #8b866f;
   justify-content: center;
   align-items: center;
   border: 3px solid $green;
+}
+
+@media only screen and (max-width: 616px) {
+  .card {
+    flex-direction: column;
+    .rightSide {
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .container {
+    width: 75%;
+  }
 }

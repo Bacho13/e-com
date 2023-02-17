@@ -21,9 +21,10 @@ $brown: #8b866f;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
+    z-index: 2;
   }
 
-  li {
+  .li {
     border: none;
     text-align: center;
     width: 320px;
@@ -35,7 +36,7 @@ $brown: #8b866f;
     transition: all 0.5s;
   }
 
-  li:hover {
+  .li:hover {
     -webkit-box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.41);
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.41);
   }

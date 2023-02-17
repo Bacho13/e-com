@@ -1,0 +1,53 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  width: 250px;
+  height: 350px;
+  background: $light-brown;
+  border-radius: 10px;
+  font-family: poppins;
+  color: $green;
+  padding-bottom: 60px;
+  h1 {
+    font-size: 20px;
+    width: 220px;
+    height: 30px;
+    overflow: hidden;
+  }
+  cursor: pointer;
+}
+.bottom {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+.img {
+  border-radius: 10px 10px 0 0;
+}
+.desc {
+  height: 50px;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.price {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #19564e;
+  color: $light;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.price:hover {
+  background-color: $brown;
+  color: $green;
+}

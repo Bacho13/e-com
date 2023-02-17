@@ -1,52 +1,57 @@
 import React, { useState } from "react";
 import styles from "../styles/componentStyles/Carousel.module.scss";
-import slide1 from "../public/images/slide1.png";
-import slide2 from "../public/images/slide2.png";
-import slide3 from "../public/images/slide3.png";
+import slide1 from "../public/images/slide1.jpg";
+import slide2 from "../public/images/slide2.jpg";
+import slide3 from "../public/images/slide3.jpg";
 import Image from "next/image";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Pagination, Scrollbar, EffectFade } from "swiper";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  EffectFade,
+} from "swiper";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { display } from "@mui/system";
 
 function Carousel() {
   const [slides, setSlides] = useState([slide1, slide2, slide3]);
-  const [exhibited, setExhibited] = useState(0);
-
-  const handleRight = () => {
-    if (exhibited == slides.length - 1) {
-      setExhibited(0);
-    } else {
-      setExhibited((exhibited) => (exhibited += 1));
-    }
-    console.log(exhibited);
-  };
-  const handleLeft = () => {
-    if (exhibited == 0) {
-      setExhibited(slides.length - 1);
-      console.log(exhibited);
-    } else {
-      setExhibited((prev) => (prev -= 1));
-      console.log(exhibited);
-    }
-  };
+  SwiperCore.use([Autoplay]);
 
   return (
     <>
-      <div className={styles.main}>
-        <div className={styles.imgCont}>
-          <Image
-            width={500}
-            height={500}
-            src={slides[exhibited]}
-            alt="slide 1"
-            className={styles.image}
-          />
-          <div className={styles.leftArrow} onClick={handleLeft}>
-            <ChevronLeftIcon className={styles.leftIcon} />
-          </div>
-          <div className={styles.rightArrow} onClick={handleRight}>
-            <ChevronRightIcon className={styles.rightIcon} />
-          </div>
-        </div>
+      <div className={styles.main} style={{ display: "block", zIndex: "0" }}>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, EffectFade]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000 }}
+          loop={true}
+          spaceBetween={0}
+          slidesPerView={1}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
+        >
+          {slides.map((item, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <Image
+                  src={item}
+                  width={100}
+                  height={100}
+                  alt={`slide${index}`}
+                  style={{ width: "100%", height: "100%", display: "block" }}
+                  priority
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </>
   );

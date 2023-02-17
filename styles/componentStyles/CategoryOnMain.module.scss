@@ -1,0 +1,50 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+
+.main {
+  width: 100%;
+  background-color: $light-green;
+  padding-bottom: 60px;
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+.header {
+  margin: 30px 0;
+}
+.swiperCont {
+  position: relative;
+}
+
+.leftShade {
+  width: 50px;
+  height: 350px;
+  background: rgb(102, 138, 127);
+  background: linear-gradient(
+    90deg,
+    rgba(102, 138, 127, 1) 11%,
+    rgba(102, 138, 127, 0) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.rightShade {
+  width: 50px;
+  height: 350px;
+  background: rgb(102, 138, 127);
+  background: linear-gradient(
+    87deg,
+    rgba(102, 138, 127, 0) 0%,
+    rgba(102, 138, 127, 1) 89%
+  );
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}

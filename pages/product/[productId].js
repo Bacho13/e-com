@@ -59,7 +59,7 @@ function CategoryItem({ data }) {
                   dispatch(getTotalQuant());
                 }}
               >
-                Add to Card
+                Add to Cart
               </button>
               <button>Buy Now</button>
             </div>

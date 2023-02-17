@@ -11,6 +11,7 @@ import { getProductsFailure, getProductsSuccess } from "../../Redux/store";
 
 function CategoryItem({ data }) {
   const products = useSelector((state) => state.products.items);
+  const isLoading = useSelector((state) => state.products.isLoading);
   const router = useRouter();
   const dispatch = useDispatch();
   const categoryName = router.query.categoryName;
@@ -30,19 +31,23 @@ function CategoryItem({ data }) {
       <div>
         <div className={styles.container}>
           <h1> {categoryName}</h1>
-          {products.map((item) => {
-            return (
-              <Link key={item.id} href={`/product/${item.id}`}>
-                <Item
-                  key={item.id}
-                  title={item.title}
-                  imgSrc={item.thumbnail}
-                  des={item.description}
-                  price={item.price}
-                />
-              </Link>
-            );
-          })}
+          {isLoading ? (
+            <div>Loading</div>
+          ) : (
+            products.map((item) => {
+              return (
+                <Link key={item.id} href={`/product/${item.id}`}>
+                  <Item
+                    key={item.id}
+                    title={item.title}
+                    imgSrc={item.thumbnail}
+                    des={item.description}
+                    price={item.price}
+                  />
+                </Link>
+              );
+            })
+          )}
         </div>
       </div>
     </>
