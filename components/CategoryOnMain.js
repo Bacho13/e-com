@@ -17,12 +17,10 @@ function CategoryOnMain({ categoryName }) {
     );
 
     setProducts(response.data.products);
-    console.log(response.data.products);
   };
 
   useEffect(() => {
     getData(categoryName);
-    console.log(products);
   }, []);
 
   return (

@@ -2,11 +2,34 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import MainPageComponent from "@/components/MainPageComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCategories, fetchProducts } from "../Redux/actions";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const username = "xisherwoodr";
+  const userPassword = "HLDqN5vCF";
+  // const userPassword = "9uQFF1Lh";
+
+  // const giveUser = async (userName, userPassword) => {
+  //   const response = await axios.get(
+  //     `https://dummyjson.com/users/filter?key=username&value=${userName}`
+  //   ); // Make GET request
+  //   // console.log(response.data); // Log response data
+  //   let users = response.data.users;
+
+  //   for (let i = 0; i < users.length; i++) {
+  //     if (
+  //       users[i].username === userName &&
+  //       users[i].password === userPassword
+  //     ) {
+  //       // return users[i].id;
+  //       console.log(users[i].id);
+  //     } else {
+  //       console.log("aseti momxmarebeli ar arsebobs an ar emtxveva paroli");
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     dispatch(fetchCategories());

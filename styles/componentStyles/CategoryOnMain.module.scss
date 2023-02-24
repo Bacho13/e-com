@@ -10,7 +10,7 @@ $brown: #8b866f;
   padding-bottom: 60px;
 }
 .container {
-  width: 1140px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 .header {
@@ -39,7 +39,7 @@ $brown: #8b866f;
   height: 350px;
   background: rgb(102, 138, 127);
   background: linear-gradient(
-    87deg,
+    90deg,
     rgba(102, 138, 127, 0) 0%,
     rgba(102, 138, 127, 1) 89%
   );
@@ -47,4 +47,7 @@ $brown: #8b866f;
   top: 0;
   right: 0;
   z-index: 2;
+}
+
+@media only screen and (max-width: 425px) {
 }

@@ -1,9 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import styles from "../styles/componentStyles/Authorisation.module.scss";
+import { logOut } from "@/Redux/userSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useSession, signIn, signOut } from "next-auth/react";
 function Authorisation() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const { data: session } = useSession();
   return (
     <>
@@ -11,18 +15,18 @@ function Authorisation() {
         <div className={styles.container}>
           <ul>
             <li>
-              {session ? (
+              {user.logIn ? (
                 <Link href="#" onClick={() => signOut()}>
                   Log out
                 </Link>
               ) : (
-                <Link href="#" onClick={() => signIn()}>
+                <Link href="/LogIn" onClick={() => dispatch(logOut)}>
                   Log in
                 </Link>
               )}
             </li>
             <li>
-              <Link href="#">Registration</Link>
+              <Link href="/Registration">Registration</Link>
             </li>
           </ul>
         </div>

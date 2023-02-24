@@ -7,6 +7,10 @@ $brown: #8b866f;
 .main {
   width: 100%;
   background-color: $green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 .announcement {
   width: 100%;

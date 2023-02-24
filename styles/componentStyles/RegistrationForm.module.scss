@@ -1,0 +1,75 @@
+$green: #19564e;
+$light-green: #668a7f;
+$light: #e1e2d3;
+$light-brown: #bfc4a9;
+$brown: #8b866f;
+.container {
+  margin: 0 auto;
+
+  h1 {
+    font-family: poppins;
+    color: $green;
+    margin: 30px 0;
+  }
+  display: flex;
+  justify-content: center;
+}
+.form {
+  background-color: $light-brown;
+
+  padding: 50px;
+
+  display: flex;
+  width: 500px;
+
+  flex-direction: column;
+  h2 {
+    font-size: 18px;
+  }
+  label {
+    color: $green;
+    font-family: poppins;
+    font-size: 15px;
+  }
+  input {
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $brown;
+    padding: 0 10px;
+    border: 1px solid none;
+  }
+  input:focus {
+    border: 1px solid $green;
+  }
+  p {
+    width: 100%;
+    height: 20px;
+    color: red;
+    margin: 5px 0;
+  }
+  .inputError {
+    border: 1px solid red;
+  }
+  button {
+    border: none;
+    height: 40px;
+    font-family: popins;
+    text-transform: uppercase;
+    background-color: $brown;
+    color: $light;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  button:hover {
+    background-color: $green;
+    color: $light;
+  }
+  button:disabled {
+    opacity: 0.3;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}
