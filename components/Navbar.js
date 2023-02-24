@@ -16,7 +16,8 @@ import { fetchCategories } from "@/Redux/actions";
 
 function Navbar() {
   let cart = useSelector((state) => state.cart);
-
+  const userLogin = useSelector((state) => state.user.logIn);
+  const user = useSelector((state) => state.user.userInfos);
   const loading = useSelector((state) => state.categories.isLoading);
   const dispatch = useDispatch();
   const { data: session } = useSession();
@@ -67,14 +68,14 @@ function Navbar() {
                 </li>
                 <li>
                   <div className={styles.dropdownAuth}>
-                    {session ? (
+                    {userLogin ? (
                       // <img
                       //   src={session.user.image}
                       //   alt="user img"
                       //   className={styles.profilePic}
                       // />
                       <Image
-                        src={session.user.image}
+                        src={user.image}
                         width="40"
                         height="40"
                         alt="/"
