@@ -8,6 +8,11 @@ function LogIn() {
       <div className={styles.main}>
         <div className={styles.container}>
           <LogInForm />
+          <h1>
+            Use to test the web site <br />
+            User : kmeus4 <br />
+            Password : aUTdmmmbH
+          </h1>
         </div>
       </div>
     </>

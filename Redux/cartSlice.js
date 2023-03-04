@@ -20,28 +20,28 @@ const cartSlice = createSlice({
       } else {
         const item = {
           ...action.payload.data,
-          itemQuant: action.payload.quantity,
+          quantity: action.payload.quantity,
         };
         state.items.push(item);
         state.totalQuant = action.payload.quantity;
       }
     },
     decreaseItemQuant(state, action) {
-      if (state.items[action.payload].itemQuant > 1) {
-        state.items[action.payload].itemQuant -= 1;
+      if (state.items[action.payload].quantity > 1) {
+        state.items[action.payload].quantity -= 1;
         state.totalQuant--;
-      } else if (state.items[action.payload].itemQuant === 1) {
+      } else if (state.items[action.payload].quantity === 1) {
         state.items.splice(action.payload, 1);
         state.totalQuant--;
       }
     },
     increaseItemQuant(state, action) {
-      state.items[action.payload].itemQuant += 1;
+      state.items[action.payload].quantity += 1;
       state.totalQuant++;
     },
     getSubTotal(state) {
       function getTotal(total, item) {
-        return (total += item.price * item.itemQuant);
+        return (total += item.price * item.quantity);
       }
 
       state.subTotal = parseFloat(state.items.reduce(getTotal, 0).toFixed(2));
@@ -53,6 +53,11 @@ const cartSlice = createSlice({
 
       state.totalQuant = state.items.reduce(getTotalQuant, 0);
     },
+    updateCartOfTheUser(state, action) {
+      const cart = action.payload;
+      state.items = cart.products;
+    },
+
     clearCart: (state) => {
       state.items = [];
     },
@@ -66,6 +71,7 @@ export const {
   increaseItemQuant,
   getSubTotal,
   getTotalQuant,
+  updateCartOfTheUser,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

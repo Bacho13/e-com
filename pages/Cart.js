@@ -4,13 +4,16 @@ import CartItem from "../components/CartItem";
 import Checkout from "@/components/Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseItemQuant, increaseItemQuant } from "@/Redux/cartSlice";
+import { useRouter } from "next/router";
 
 function Cart() {
+  const user = useSelector((state) => state.user);
   let price = 900;
   const [quant, setQuant] = useState(1);
   const [total, setTotal] = useState(0);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const minus = (index) => {
     // dispatch(decreaseItemQuant(index));
@@ -21,11 +24,17 @@ function Cart() {
     setQuant((prev) => prev + 1);
   };
 
-  // const calculateTotal = () => {
-  //   setTotal(quant * price);
-  // };
+  const handleStateChange = () => {
+    // Determine the new route based on the state
+    const newRoute = user.logIn && "/Cart";
 
-  console.log(cart.items);
+    // Navigate to the new route
+    router.push(newRoute);
+  };
+
+  useEffect(() => {
+    handleStateChange();
+  }, [user]);
 
   return (
     <>
@@ -47,18 +56,6 @@ function Cart() {
               />
             );
           })}
-          {/* <CartItem
-            quant={quant}
-            handleplus={plus}
-            handleminus={minus}
-            price={price}
-          />
-          <CartItem
-            quant={quant}
-            handleplus={plus}
-            handleminus={minus}
-            price={price}
-          /> */}
           <Checkout total={cart.total} />
         </div>
       </div>

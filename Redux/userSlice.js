@@ -12,6 +12,7 @@ const userSlice = createSlice({
     logIn: (state, action) => {
       state.userInfos = action.payload;
       state.logIn = true;
+      console.log(action.payload);
     },
     logOut: (state) => {
       state.userInfos = {};

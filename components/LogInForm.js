@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/componentStyles/LogInForm.module.scss";
 import { logIn } from "@/Redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+import { updateCart } from "@/Redux/cartSlice";
+import { updateCartOfTheUser } from "@/Redux/cartSlice";
 
 function LogInForm() {
   const user = useSelector((state) => state.user.userInfos);
@@ -19,39 +20,35 @@ function LogInForm() {
   }
 
   const handleLogIn = (user, password) => {
-    const fetchUsers = async (user) => {
-      const res = await axios.get(
-        `https://dummyjson.com/users/filter?key=username&value=${user}`
-      );
-      return res.data;
-    };
-
-    const fetchUser = async (userId) => {
-      const res = await axios.get(
-        `https://dummyjson.com/users/filter?key=id&value=${userId}`
-      );
-      return res.data;
-    };
-
-    fetchUsers(user, password).then((data) => {
-      for (let i = 0; i < data.users.length; i++) {
-        if (
-          data.users[i].username === user &&
-          data.users[i].password === password
-        ) {
-          console.log(data.users[i].id);
-          fetchUser(data.users[i].id).then(
-            (data) => dispatch(logIn(data.users[0]), console.log(data.users[0]))
-            // (data) => console.log(data.users[0])
-          );
-        } else {
-          console.log("aseti momxmarebeli ar arsebobs an ar emtxveva paroli");
-        }
-      }
-    });
+    fetch("https://dummyjson.com/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: user,
+        password: password,
+        // expiresInMins: 60, // optional
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(logIn(data)));
   };
 
-  console.log(userLogin);
+  const fetchCartItem = async (id) => {
+    const response = await fetch(`https://dummyjson.com/carts/${id}`);
+    const data = await response.json();
+    return data;
+  };
+
+  const updateCart = (id) => async (dispatch) => {
+    const item = await fetchCartItem(id);
+    dispatch(updateCartOfTheUser(item));
+  };
+
+  useEffect(() => {
+    if (userLogin) {
+      dispatch(updateCart(user.id));
+    }
+  }, [user]);
 
   const showContetn = (user) => {
     {

@@ -26,7 +26,11 @@ function Authorisation() {
               )}
             </li>
             <li>
-              <Link href="/Registration">Registration</Link>
+              {user.logIn ? (
+                <Link href="#">Profile</Link>
+              ) : (
+                <Link href="/Registration">Registration</Link>
+              )}
             </li>
           </ul>
         </div>

@@ -28,11 +28,11 @@ function CartItem({ product, quant, index, handleDecrease, handleIncrease }) {
               <tr>
                 <td>
                   <div className={styles.product}>
-                    <img
+                    {/* <img
                       src={product.thumbnail}
                       alt="product img"
                       width={150}
-                    />
+                    /> */}
                     <p>{product.title}</p>
                   </div>
                 </td>
@@ -42,7 +42,7 @@ function CartItem({ product, quant, index, handleDecrease, handleIncrease }) {
                     <div className={styles.minus} onClick={handleDecrease}>
                       -
                     </div>
-                    <div>{product.itemQuant}</div>
+                    <div>{product.quantity}</div>
                     <div className={styles.plus} onClick={handleIncrease}>
                       +
                     </div>
@@ -50,10 +50,7 @@ function CartItem({ product, quant, index, handleDecrease, handleIncrease }) {
                 </td>
                 <td>
                   <div className={styles.totalCont}>
-                    <h2>
-                      ${" "}
-                      {parseFloat(product.price * product.itemQuant.toFixed(2))}
-                    </h2>
+                    <h2>$ {parseFloat(product.price * product.quantity)}</h2>
                   </div>
                 </td>
               </tr>
