@@ -61,7 +61,7 @@ function Navbar() {
                     <div className={styles.shoppingBagCont}>
                       <LocalMallIcon />
                       {cart.items.length > 0 && (
-                        <div className={styles.badge}>{cart.items.length}</div>
+                        <div className={styles.badge}>{cart.totalQuant}</div>
                       )}
                     </div>
                   </Link>

@@ -16,7 +16,7 @@ const cartSlice = createSlice({
       );
 
       if (existIndex >= 0) {
-        state.items[existIndex].itemQuant += action.payload.quantity;
+        state.items[existIndex].quantity += action.payload.quantity;
       } else {
         const item = {
           ...action.payload.data,
@@ -37,6 +37,7 @@ const cartSlice = createSlice({
     },
     increaseItemQuant(state, action) {
       state.items[action.payload].quantity += 1;
+      console.log(state.items[action.payload].quantity);
       state.totalQuant++;
     },
     getSubTotal(state) {
@@ -48,7 +49,7 @@ const cartSlice = createSlice({
     },
     getTotalQuant(state) {
       function getTotalQuant(total, item) {
-        return (total += item.itemQuant);
+        return (total += item.quantity);
       }
 
       state.totalQuant = state.items.reduce(getTotalQuant, 0);

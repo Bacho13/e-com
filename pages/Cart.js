@@ -5,6 +5,7 @@ import Checkout from "@/components/Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseItemQuant, increaseItemQuant } from "@/Redux/cartSlice";
 import { useRouter } from "next/router";
+import { getTotalQuant } from "@/Redux/cartSlice";
 
 function Cart() {
   const user = useSelector((state) => state.user);
@@ -33,8 +34,10 @@ function Cart() {
   };
 
   useEffect(() => {
-    handleStateChange();
-  }, [user]);
+    console.log(getTotalQuant(cart.items));
+  }, [cart]);
+
+  useEffect(() => {}, [user]);
 
   return (
     <>
@@ -49,9 +52,11 @@ function Cart() {
                 index={index}
                 handleDecrease={() => {
                   dispatch(decreaseItemQuant(index));
+                  console.log("daechira");
                 }}
                 handleIncrease={() => {
                   dispatch(increaseItemQuant(index));
+                  console.log("daechira");
                 }}
               />
             );
