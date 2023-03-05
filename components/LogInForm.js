@@ -100,7 +100,7 @@ function LogInForm() {
                 onChange={handleInputChange}
               />
             </label>
-            <p className={styles.error}>error aris ver shexvedi</p>
+            <p className={styles.error}></p>
             <button
               onClick={() =>
                 handleLogIn(logCreditionals.user, logCreditionals.password)
